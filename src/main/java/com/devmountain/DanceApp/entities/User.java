@@ -1,5 +1,6 @@
 package com.devmountain.DanceApp.entities;
 
+import com.devmountain.DanceApp.dtos.UserDto;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -43,7 +44,7 @@ public class User {
         return password;
     }
 
-    public User() {
+    public User(UserDto userDto) {
     }
 
     public User(Long id, String username, String password) {

@@ -1,7 +1,9 @@
 package com.devmountain.DanceApp.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.servlet.Registration;
 
 @Entity
 @Table(name="Lessons")
@@ -16,6 +18,14 @@ public class Lesson {
 
     @Column(columnDefinition = "text")
     private String description;
+
+//    @ManyToMany
+//    @JsonBackReference
+//    private User user;
+
+    @ManyToMany
+    @JsonBackReference
+    private Registration registration;
 
     public Long getId() {
         return lessonId;
