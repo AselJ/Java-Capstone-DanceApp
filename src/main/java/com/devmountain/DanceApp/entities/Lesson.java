@@ -1,6 +1,7 @@
 package com.devmountain.DanceApp.entities;
 
 
+import com.devmountain.DanceApp.dtos.LessonDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.servlet.Registration;
@@ -26,6 +27,10 @@ public class Lesson {
     @ManyToMany
     @JsonBackReference
     private Registration registration;
+
+    public Lesson(LessonDto lessonDto) {
+
+    }
 
     public Long getId() {
         return lessonId;

@@ -15,13 +15,12 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-    private UserDto userDto;
+    @Autowired
     private String passwordEncoder;
 
     @Override
     @Transactional
     public List<String> addUser(UserDto userDto) {
-        this.userDto = userDto;
         List<String> response = new ArrayList<>();
         User user = new User(userDto);
         userRepository.saveAndFlush(user);

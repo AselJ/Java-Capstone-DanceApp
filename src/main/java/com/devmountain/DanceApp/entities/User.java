@@ -3,6 +3,7 @@ package com.devmountain.DanceApp.entities;
 import com.devmountain.DanceApp.dtos.UserDto;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +24,8 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JsonManagedReference
     private Set<Registration> registrationSet = new HashSet<>();
+    @Getter
+    private Object body;
 
     public Long getId() {
         return userId;
@@ -56,4 +59,9 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setBody(Object body) {
+        this.body = body;
+    }
+
 }

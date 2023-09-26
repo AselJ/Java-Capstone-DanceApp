@@ -1,16 +1,15 @@
 package com.devmountain.DanceApp.services;
 
+import com.devmountain.DanceApp.dtos.LessonDto;
 import com.devmountain.DanceApp.dtos.UserDto;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface UserService {
+public interface RegistrationService {
     @Transactional
     List<String> addUser(UserDto userDto);
 
-    List<String> userLogin(UserDto userDto);
-
-    Optional<UserDto> getUserById(Long userId);
+    @Transactional
+    List<String> addLesson(LessonDto lessonDto);
 }

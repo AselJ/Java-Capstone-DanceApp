@@ -29,5 +29,9 @@ import java.util.Set;
                 this.password = user.getPassword();
             }
         }
+
+        public Object getBody() {
+            return null;
+        }
     }
 
