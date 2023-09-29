@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<String> userLogin(UserDto userDto) {
         List<String> response = new ArrayList<>();
-        Optional<User> userOptional = userRepository.findByUsername(userDto.getUsername());
+        Optional<User> userOptional = userRepository.findByUserId(userDto.getUsername());
         if (userOptional.isPresent()) {
 
             if (passwordEncoder.matches(userDto.getPassword())) {
@@ -46,5 +46,10 @@ public class UserServiceImpl implements UserService {
         return response;
     }
 
+    @Override
+    public Optional<UserDto> getUserById(Long userId) {
+        return Optional.empty();
     }
+
+}
 

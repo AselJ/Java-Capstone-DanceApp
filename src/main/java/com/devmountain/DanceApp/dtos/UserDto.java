@@ -9,10 +9,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public class UserDto implements Serializable {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDto implements Serializable {
         private Long id;
         private String username;
         private String password;

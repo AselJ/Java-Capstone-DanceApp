@@ -80,7 +80,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     public List<LessonDto> getAllLessonsByUserId(Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
         if(userOptional.isPresent()) {
-            List<Lesson> lessonList = lessonRepository.findAllByUserEquals(userOptional.get());
+            List<Lesson> lessonList = lessonRepository.findAllByLessonEquals();
             return lessonList.stream().map(lesson -> new LessonDto()).collect(Collectors.toList());
         }
         return (List<LessonDto>) Collectors.toList();

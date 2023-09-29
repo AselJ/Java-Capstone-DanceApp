@@ -5,9 +5,15 @@ import com.devmountain.DanceApp.dtos.LessonDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.servlet.Registration;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="Lessons")
+@Table(name = "Lessons")
+@Data
+@AllArgsConstructor
+
 public class Lesson {
 
     @Id
@@ -20,11 +26,12 @@ public class Lesson {
     @Column(columnDefinition = "text")
     private String description;
 
-//    @ManyToMany
-//    @JsonBackReference
-//    private User user;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+    @JoinTable
+            (
+
+            )
     @JsonBackReference
     private Registration registration;
 
