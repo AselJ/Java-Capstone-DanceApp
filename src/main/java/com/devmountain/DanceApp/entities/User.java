@@ -20,44 +20,32 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name", unique = true)
-    private  String username;
+    private String username;
 
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    Set<Registration> registration;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonManagedReference
+
+    private Set<Registration> registrationSet = new HashSet<>();
 
 
-//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-//    @JsonManagedReference
-//    private Set<Registration> registrationSet = new HashSet<>();
-
-
-    public User(UserDto userDto)
-    {
-        if(userDto.getId() != null)
-        {
+    public User(UserDto userDto) {
+        if (userDto.getId() != null) {
             this.id = userDto.getId();
         }
-        if(userDto.getUsername() != null)
-        {
+        if (userDto.getUsername() != null) {
             this.username = userDto.getUsername();
         }
-        if(userDto.getPassword() != null)
-        {
+        if (userDto.getPassword() != null) {
             this.password = userDto.getPassword();
         }
     }
-
-//    public User(Long id, String username, String password) {
-//        this.id = id;
-//        this.username = username;
-//        this.password = password;
-//    }
 }
 
 

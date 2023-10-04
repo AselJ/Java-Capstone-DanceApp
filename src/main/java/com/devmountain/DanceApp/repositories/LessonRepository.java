@@ -5,9 +5,6 @@ import com.devmountain.DanceApp.entities.Registration;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 @Repository
 public interface LessonRepository extends JpaRepository<Lesson, Long> {
     static void saveAndFlush(Registration lesson) {

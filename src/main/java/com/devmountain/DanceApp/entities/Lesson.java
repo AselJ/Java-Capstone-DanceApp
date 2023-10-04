@@ -2,11 +2,13 @@ package com.devmountain.DanceApp.entities;
 
 
 import com.devmountain.DanceApp.dtos.LessonDto;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,6 +21,7 @@ public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long lessonId;
 
     @Column(columnDefinition = "text")
@@ -28,8 +31,10 @@ public class Lesson {
     private String description;
 
 
-    @OneToMany(mappedBy = "lesson")
-    Set<Registration> registration;
+    @OneToMany(mappedBy = "lesson", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonManagedReference
+
+    private Set<Registration> registrationSet = new HashSet<>();
 
     public Lesson(LessonDto lessonDto)
     {

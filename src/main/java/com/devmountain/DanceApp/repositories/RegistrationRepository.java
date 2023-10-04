@@ -4,12 +4,9 @@ import com.devmountain.DanceApp.entities.Registration;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 @Repository
 public interface RegistrationRepository extends JpaRepository<Registration, Long> {
-
+}
 //        public default Object saveAndFlush() {
 //            return saveAndFlush(null);
 //        }
@@ -26,5 +23,5 @@ public interface RegistrationRepository extends JpaRepository<Registration, Long
 //        public default List<Registration> findAllByRegistrationEquals(Registration registration) {
 //            return new ArrayList<>();
 //        }
-    }
+
 
