@@ -16,58 +16,48 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
 
-    @Column(unique = true)
+    @Column(name = "name", unique = true)
     private  String username;
 
-    @Column
+    @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JsonManagedReference
-    private Set<Registration> registrationSet = new HashSet<>();
-    @Getter
-    private Object body;
+    @OneToMany(mappedBy = "user")
+    Set<Registration> registration;
 
-    public Long getId() {
-        return userId;
+
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+//    @JsonManagedReference
+//    private Set<Registration> registrationSet = new HashSet<>();
+
+
+    public User(UserDto userDto)
+    {
+        if(userDto.getId() != null)
+        {
+            this.id = userDto.getId();
+        }
+        if(userDto.getUsername() != null)
+        {
+            this.username = userDto.getUsername();
+        }
+        if(userDto.getPassword() != null)
+        {
+            this.password = userDto.getPassword();
+        }
     }
 
-    public void setId(Long id) {
-        this.userId = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public User(UserDto userDto) {
-    }
-
-    public User(Long id, String username, String password) {
-        this.userId = id;
-        this.username = username;
-        this.password = password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setBody(Object body) {
-        this.body = body;
-    }
-
+//    public User(Long id, String username, String password) {
+//        this.id = id;
+//        this.username = username;
+//        this.password = password;
+//    }
 }
+
+

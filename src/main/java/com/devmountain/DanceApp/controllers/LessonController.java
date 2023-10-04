@@ -1,29 +1,49 @@
 package com.devmountain.DanceApp.controllers;
 
-import com.devmountain.DanceApp.repositories.LessonRepository;
+import com.devmountain.DanceApp.dtos.LessonDto;
+import com.devmountain.DanceApp.services.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/lessons")
+@RequestMapping("/lesson")
 public class LessonController {
+    @Autowired
+    public LessonService lessonService;
 
-    private final LessonRepository lessonRepository;
-
-    public LessonController(LessonRepository lessonRepository){
-        this.lessonRepository = lessonRepository;
+    @GetMapping("/all")
+    public List<LessonDto> getAllLesson()
+    {
+        return lessonService.getAllLesson();
     }
-    public String getlessons(Model model) {
-        Model lessons;
-        lessons = model.addAttribute("lessons", Collections.unmodifiableList(LessonRepository.findByAttribute()));
 
-        return "lessons";
-
+    @PostMapping("/add")
+    public void addLesson(@RequestBody LessonDto lessonDto)
+    {
+        lessonService.addLesson(lessonDto);
     }
+
+    @DeleteMapping("/delete/{lessonId}")
+    public void deleteLessonById(@PathVariable Long lessonId)
+    {
+        lessonService.deleteLessonById(lessonId);
+    }
+
+    @PutMapping("/update")
+    public void updateLesson(@RequestBody LessonDto lessonDto)
+    {
+        lessonService.updateLesson(lessonDto);
+    }
+
+
+//    public String getLesson(Model model) {
+//        Model lessons;
+//        lessons = model.addAttribute("lessons", Collections.unmodifiableList(LessonRepository.findById()));
+//
+//        return "lessons";
+//
+//    }
 }
 

@@ -1,9 +1,9 @@
 package com.devmountain.DanceApp.entities;
 
+import com.devmountain.DanceApp.dtos.RegistrationDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
@@ -12,10 +12,11 @@ import java.util.Date;
 @Table(name = "Registration")
 @Data
 @AllArgsConstructor
-
+@NoArgsConstructor
 
 public class Registration {
-    @Getter
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,27 +29,48 @@ public class Registration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long lessonId;
 
-    @Getter
     @Column(columnDefinition = "date")
     private Date registrationDate;
 
-    //private<Set>
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    User user;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "lessonId")
+    Lesson lesson;
 
-    public void setDate(Date date) {
-        this.registrationDate = date;
-    }
-
-    public Registration() {
-    }
-
-    public Registration(Long id, Date date) {
-        this.id = id;
-        this.userId = id;
-        this.lessonId = id;
-        this.registrationDate = date;
+    public Registration(RegistrationDto registrationDto) {
+        if (registrationDto.getId() != null) {
+            this.id = registrationDto.getId();
+        }
+        if (registrationDto.getUserId() != null) {
+            this.id = registrationDto.getUserId();
+        }
+        if (registrationDto.getLessonId() != null) {
+            this.id = registrationDto.getLessonId();
+        }
+        if (registrationDto.getRegistrationDate() != null) {
+            this.registrationDate = registrationDto.getRegistrationDate();
+        }
     }
 }
+
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public void setDate(Date date) {
+//        this.registrationDate = date;
+//    }
+//
+//    public Registration(Long id, Date date) {
+//        this.id = id;
+//        User userId = new User();
+//        this.user = userId;
+//        Lesson lessonId;
+//        lessonId = null;
+//        this.lesson = lessonId;
+//        this.registrationDate = date;
+//    }
+//}

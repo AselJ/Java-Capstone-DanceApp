@@ -1,17 +1,26 @@
 package com.devmountain.DanceApp.dtos;
 
-
-import com.devmountain.DanceApp.entities.Lesson;
 import com.devmountain.DanceApp.entities.Registration;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegistrationDto implements Serializable {
+
+        private Long id;
+
+        private Long userId;
+
+        private Long lessonId;
+
+        private Date registrationDate;
+
 
         private UserDto userDto;
 
@@ -20,10 +29,16 @@ public class RegistrationDto implements Serializable {
         public RegistrationDto(Registration registration){
 
             if(registration.getId() != null){
-                Long id = registration.getId();
+                this.id = registration.getId();
+            }
+            if(registration.getUserId() != null){
+                this.id = registration.getUserId();
+            }
+            if(registration.getLessonId() != null){
+                this.id = registration.getLessonId();
             }
             if(registration.getRegistrationDate() != null){
-                String registrationDate = String.valueOf(registration.getRegistrationDate());
+                this.registrationDate = registration.getRegistrationDate();
             }
         }
     }

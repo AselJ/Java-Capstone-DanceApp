@@ -4,32 +4,48 @@ import com.devmountain.DanceApp.dtos.UserDto;
 import com.devmountain.DanceApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
+    @GetMapping("/all")
+
+    public List<UserDto> getAllUsers()
+    {
+        return userService.getAllUsers();
+    }
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/register")
+    @PostMapping("/add")
     public List<String> addUser(@RequestBody UserDto userDto){
         String passHash = passwordEncoder.encode(userDto.getPassword());
         // userDto.setPassword(Boolean.parseBoolean(passHash));
         return userService.addUser(userDto);
     }
 
-    @PostMapping("/login")
-    public List<String> userLogin(@RequestBody UserDto userDto){
-        return userService.userLogin(userDto);
+//    @PostMapping("/login")
+//    public List<String> userLogin(@RequestBody UserDto userDto){
+//        return userService.userLogin(userDto);
+//    }
+
+    @DeleteMapping("/delete/{userId}")
+    public void deleteUserById(@PathVariable Long userId)
+    {
+        userService.deleteUserById(userId);
     }
+
+    @PutMapping("/update")
+    public void updateUser(@RequestBody UserDto pokemonDto)
+    {
+
+    }
+
 }
 
 

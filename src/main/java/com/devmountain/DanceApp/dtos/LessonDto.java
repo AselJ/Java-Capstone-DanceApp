@@ -10,20 +10,27 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LessonDto implements Serializable {
-        private Long id;
-        private String name;
+
+        private Long lessonId;
+
+        private String lessonName;
 
         private String description;
+
         private UserDto userDto;
 
-        public LessonDto(Lesson lesson){
-            if(lesson.getId() != null){
-                this.id = lesson.getId();
-            }
-            if(lesson.getName() != null){
-                this.name = lesson.getName();
-            }
+        public LessonDto(Lesson lesson)
+        {
+                if(lesson.getLessonId() != null){
+                        this.lessonId = lesson.getLessonId();
+                }
+                if(lesson.getLessonName() != null){
+                        this.lessonName = lesson.getLessonName();
+                }
+                if(lesson.getDescription() != null){
+                        this.description = lesson.getDescription();
+                }
         }
-    }
+}
 
 

@@ -13,8 +13,11 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto implements Serializable {
+
         private Long id;
+
         private String username;
+
         private String password;
         // private Set<NoteDto> noteDtoSet = new HashSet<>();
 
@@ -30,8 +33,8 @@ public class UserDto implements Serializable {
             }
         }
 
-        public Object getBody() {
-            return null;
-        }
+//        public Object getBody() {
+//            return null;
+//        }
     }
 
