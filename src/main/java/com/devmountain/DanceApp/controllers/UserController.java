@@ -9,43 +9,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/v1/users")
 public class UserController {
     @Autowired
     private UserService userService;
-    @GetMapping("/all")
-
-    public List<UserDto> getAllUsers()
-    {
-        return userService.getAllUsers();
-    }
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @PostMapping("/add")
+    @PostMapping("/register")
     public List<String> addUser(@RequestBody UserDto userDto){
         String passHash = passwordEncoder.encode(userDto.getPassword());
-        // userDto.setPassword(Boolean.parseBoolean(passHash));
+        userDto.setPassword(passHash);
         return userService.addUser(userDto);
     }
-
-//    @PostMapping("/login")
-//    public List<String> userLogin(@RequestBody UserDto userDto){
-//        return userService.userLogin(userDto);
-//    }
-
-    @DeleteMapping("/delete/{userId}")
-    public void deleteUserById(@PathVariable Long userId)
-    {
-        userService.deleteUserById(userId);
+    @PostMapping("/login")
+    public List<String> userLogin(@RequestBody UserDto userDto){
+        return userService.userLogin(userDto);
     }
-
-    @PutMapping("/update")
-    public void updateUser(@RequestBody UserDto pokemonDto)
-    {
-
-    }
-
 }
 
 

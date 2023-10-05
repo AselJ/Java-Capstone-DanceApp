@@ -10,11 +10,6 @@ import java.util.List;
 
 public interface RegistrationService {
     List<RegistrationDto> getAllRegistration();
-
-    List<String> addUser(UserDto userDto);
-
-    List<String> addLesson(LessonDto lessonDto);
-
     void addRegistration(RegistrationDto registrationDto);
 
     void deleteRegistrationById(Long registrationId);

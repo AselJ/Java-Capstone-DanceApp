@@ -4,7 +4,6 @@ import com.devmountain.DanceApp.dtos.LessonDto;
 import com.devmountain.DanceApp.services.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -40,7 +39,8 @@ public class LessonController {
 
 //    public String getLesson(Model model) {
 //        Model lessons;
-//        lessons = model.addAttribute("lessons", Collections.unmodifiableList(LessonRepository.findById()));
+//        SimpleJpaRepository<Object, Object> LessonRepository;
+//        lessons = model.addAttribute("lessons", Collections.unmodifiableList(com.devmountain.DanceApp.repositories.LessonRepository.findById()));
 //
 //        return "lessons";
 //

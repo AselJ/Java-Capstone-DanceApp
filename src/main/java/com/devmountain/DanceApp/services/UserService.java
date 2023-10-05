@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
+    //List<UserDto> getAllUsers();
+    @Transactional
     List<String> addUser(UserDto userDto);
 
     List<String> userLogin(UserDto userDto);
 
-    Optional<UserDto> getUserById(Long userId);
+    //Optional<UserDto> getUserById(Long userId);
 
-    List<UserDto> getAllUsers();
+    //void deleteUserById(Long userId);
 
-    void deleteUserById(Long userId);
-
-    void updateUser(UserDto userDto);
+    //void updateUser(UserDto userDto);
 }

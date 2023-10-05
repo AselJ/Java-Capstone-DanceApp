@@ -1,6 +1,7 @@
 package com.devmountain.DanceApp.entities;
 
 import com.devmountain.DanceApp.dtos.RegistrationDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,37 +26,20 @@ public class Registration {
     @Column(name = "id")
     private Long id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long userId;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long lessonId;
-
     @Column(columnDefinition = "date")
     private Date registrationDate;
 
-    @ManyToMany(mappedBy = "registration", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JsonManagedReference
-    @JoinTable(
-            name = "Registration",
-            joinColumns = {@JoinColumn(name = "userId"), @JoinColumn(name = "lessonId")}
-    )
-    private Set<User> userSet = new HashSet<>();
-    private Set<Lesson> lessonSet = new HashSet<>();
+    @ManyToOne
+    @JsonBackReference
+    private User user;
+
+    @ManyToOne
+    @JsonBackReference
+    private Lesson lesson;
 
     public Registration(RegistrationDto registrationDto) {
         if (registrationDto.getId() != null) {
             this.id = registrationDto.getId();
-        }
-        if (registrationDto.getUserId() != null) {
-            this.id = registrationDto.getUserId();
-        }
-        if (registrationDto.getLessonId() != null) {
-            this.id = registrationDto.getLessonId();
         }
         if (registrationDto.getRegistrationDate() != null) {
             this.registrationDate = registrationDto.getRegistrationDate();

@@ -1,15 +1,15 @@
-package com.devmountain.DanceApp.repositories;
-
-import com.devmountain.DanceApp.entities.Lesson;
-import com.devmountain.DanceApp.entities.Registration;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface LessonRepository extends JpaRepository<Lesson, Long> {
-    static void saveAndFlush(Registration lesson) {
-
-    }
+//package com.devmountain.DanceApp.repositories;
+//
+//import com.devmountain.DanceApp.entities.Lesson;
+//import com.devmountain.DanceApp.entities.Registration;
+//import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.stereotype.Repository;
+//
+//@Repository
+//public interface LessonRepository extends JpaRepository<Lesson, Long> {
+//    static void saveAndFlush(Registration lesson) {
+//
+//    }
 //    static List<Lesson> findById() {
 //        return null;
 //    }
@@ -37,4 +37,4 @@ public interface LessonRepository extends JpaRepository<Lesson, Long> {
 //        List<Lesson> lessonList = null;
 //        return lessonList;
 //    }
-}
+//}

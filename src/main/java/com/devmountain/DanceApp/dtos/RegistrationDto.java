@@ -14,12 +14,7 @@ public class RegistrationDto implements Serializable {
 
         private Long id;
 
-        private Long userId;
-
-        private Long lessonId;
-
         private Date registrationDate;
-
 
         private UserDto userDto;
 
@@ -29,12 +24,6 @@ public class RegistrationDto implements Serializable {
 
             if(registration.getId() != null){
                 this.id = registration.getId();
-            }
-            if(registration.getUserId() != null){
-                this.id = registration.getUserId();
-            }
-            if(registration.getLessonId() != null){
-                this.id = registration.getLessonId();
             }
             if(registration.getRegistrationDate() != null){
                 this.registrationDate = registration.getRegistrationDate();

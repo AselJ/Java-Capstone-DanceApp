@@ -20,25 +20,18 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", unique = true)
+    @Column(unique = true)
     private String username;
 
-    @Column(name = "password")
+    @Column
     private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonManagedReference
-
     private Set<Registration> registrationSet = new HashSet<>();
-
-
     public User(UserDto userDto) {
-        if (userDto.getId() != null) {
-            this.id = userDto.getId();
-        }
         if (userDto.getUsername() != null) {
             this.username = userDto.getUsername();
         }

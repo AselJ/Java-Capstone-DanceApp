@@ -9,8 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    static void saveAndFlush(Registration user) {
-
-    }
-    //public Optional<User> findByUserId(String username);
+    Optional<User> findByUsername(String username);
 }

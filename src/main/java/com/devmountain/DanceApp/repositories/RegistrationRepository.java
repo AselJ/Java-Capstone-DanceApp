@@ -1,12 +1,14 @@
-package com.devmountain.DanceApp.repositories;
-
-import com.devmountain.DanceApp.entities.Registration;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface RegistrationRepository extends JpaRepository<Registration, Long> {
-}
+//package com.devmountain.DanceApp.repositories;
+//
+//import com.devmountain.DanceApp.entities.Registration;
+//import com.devmountain.DanceApp.entities.User;
+//import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.stereotype.Repository;
+//
+//@Repository
+//public interface RegistrationRepository extends JpaRepository<Registration, Long> {
+//    void setUser(User user);
+//}
 //        public default Object saveAndFlush() {
 //            return saveAndFlush(null);
 //        }
@@ -16,6 +18,8 @@ public interface RegistrationRepository extends JpaRepository<Registration, Long
 //            return Optional.empty();
 //        }
 //
+
+
 //        @Override
 //        public default void delete(Registration registration) {
 //

@@ -17,8 +17,6 @@ public class UserDto implements Serializable {
         private String username;
 
         private String password;
-        //private Set<NoteDto> noteDtoSet = new HashSet<>();
-
         public UserDto(User user) {
             if (user.getId() != null) {
                 this.id = user.getId();
@@ -30,9 +28,5 @@ public class UserDto implements Serializable {
                 this.password = user.getPassword();
             }
         }
-
-//        public Object getBody() {
-//            return null;
-//        }
-    }
+}
 

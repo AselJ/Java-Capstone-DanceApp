@@ -33,7 +33,6 @@ public class Lesson {
 
     @OneToMany(mappedBy = "lesson", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonManagedReference
-
     private Set<Registration> registrationSet = new HashSet<>();
 
     public Lesson(LessonDto lessonDto)
